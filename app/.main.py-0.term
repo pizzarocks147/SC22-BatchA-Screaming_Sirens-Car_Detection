@@ -1,0 +1,45 @@
+(base) ]0;~/omni-car-detection/app[01;34m~/omni-car-detection/app[00m$ ][Kpython
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+[GCC 7.5.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> get_base_url)[K(12334[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kfrom flast^?[K[K[K[K[K[K[K[K[K[K[Kfrom flask import send_from_directory
+>>> from flask import Flask, flash, request, redirect, url_for
+>>> from werkzeug.utils import secure_filename
+>>> from flask import render_template
+>>> from url_utils import get_base_url
+>>> import os
+>>> import torch
+>>> ns[K[Kbase [K[K[K[K[Kget_base_url(12345)
+'/bf0b3665-37be-49f4-895a-fd6a70d9dc4a/port/12345/'
+>>> F;[K[K++[K[K__nmam[K[K[Kame__
+'__main__'
+>>> [K>>> str_list = ['1', '2' ,[K[K, '4']
+>>> ','.[K '[K[K[K '.join(str_list)
+'1, 2, 4'
+>>> str_list
+['1', '2', '4']
+>>> (base) ]0;~/omni-car-detection/app[01;34m~/omni-car-detection/app[00m$ [K(base) ]0;~/omni-car-detection/app[01;34m~/omni-car-detection/app[00m$ [K(base) ]0;~/omni-car-detection/app[01;34m~/omni-car-detection/app[00m$ python
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+[GCC 7.5.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> '.1214124124'.rsplit('.')
+['', '1214124124']
+>>> '.1214124124'.rsplit('.')[1P'.rsplit('.')[1P'.rsplit('.')[1P'.rsplit('.')[1P'.rsplit('.')[1P'.rsplit('.')[C[C[C[C[C[C[C[C[C[C[C[1P'.rsplit('.')[C[C[C[C[C[C[C[C[C[C[1P'.rsplit('.')[C[C[C[C[C[C[C[C[C[1P'.rsplit('.')[C[C[C[C[C[C[C[C.'.rsplit('.')[C[C[C[C[C[C[C[C[C2'.rsplit('.')[C[C[C[C[C[C[C[C[C[C3'.rsplit('.')[C[C[C[C[C[C[C[C[C[C[C.'.rsplit('.')2'.rsplit('.')3'.rsplit('.')[1P'.rsplit('.')[1P'.rsplit('.')3'.rsplit('.')4'.rsplit('.').'.rsplit('.')4'.rsplit('.')5'.rsplit('.')
+['', '12', '23', '34', '45']
+>>> '.12.23.34.45'.rsplit('.')[C[C,) )1)
+['.12.23.34', '45']
+>>> '.12.23.34.45'.rsplit('.', 1)[C[1]
+'45'
+>>> '.12.23.34.45'.rsplit('.', 1)[1].lower
+<built-in method lower of str object at 0x7f5201317e30>
+>>> cls[K[K[Kexit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> l[Kexit()
+(base) ]0;~/omni-car-detection/app[01;34m~/omni-car-detection/app[00m$ cls
+bash: cls: command not found
+(base) ]0;~/omni-car-detection/app[01;34m~/omni-car-detection/app[00m$ clear
+[H[J(base) ]0;~/omni-car-detection/app[01;34m~/omni-car-detection/app[00m$ py[K[Kpython
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+[GCC 7.5.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> ''[K[Kf[Kfaefaw[Kfe[K30320[K[K[K[K[K[K[K[K[K[K[Kfkfkfkfkfk[K[K[K[K[K[K[K[K[K[Kjfjfjfjfjf[K[K[K[K[K[K[K[K[K[KJ[Kj[KJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kos[K[K[K>>> 

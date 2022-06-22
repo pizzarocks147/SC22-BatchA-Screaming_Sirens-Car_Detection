@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Timeline</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/timeline.css')}}" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">Timeline</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="detect">Detect</a></li>
+                        <li class="nav-item"><a class="nav-link" href="timeline">Timeline</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+            <!-- Header-->
+            <header style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url({{ url_for('static', filename='/imagescars/busyhighway.gif')}});" class='masthead'>
+            <div class="row justify-content-center">
+                       <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase text-white">Timeline</h1>
+                                <a class="btn btn-primary btn-lg my-5" href="#scroll-target">How did we build this in three weeks?</a>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+        </header>
+
+            <!-- About section one-->
+            <section class="py-5 bg-light" id="scroll-target">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6">
+                          <!--img class="img-fluid rounded mb-5 mb-lg-0" src="assets/goodbrain.png" alt="..." /></div-->
+                          <img class="img-fluid" src="{{ url_for('static', filename='/timelineimage/goodbrain.png')}}"></div>
+                        <div class="col-lg-6">
+                            <h1 class="fw-bolder">June 6 - June 10</h1>
+                            <h2 class ="fw-bolder">Brainstorming Project Ideas</h2>
+                            <p class="lead fw-normal text-muted mb-0">During the first week of AI Camp we met with our groups and learned about the focus of the camp: computer vision. Computer vision is a field of AI in which the trained model can identify images, videos, and more. After we learned about computer vision and machine learning, we began searching for potential problems a computer vision project could solve. Finally we came to the decision of creating an AI that could identify Honda and Toyota car models to find the average price range of the car or identify stolen cars in the modern world. In order to do this, we also spent some time learning python.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section two-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid" src="{{ url_for('static', filename='/timelineimage/train.webp')}}">
+                        </div>
+                        <div class="col-lg-6">
+                            <h1 class="fw-bolder">June 13 - June 17</h1>
+                            <h2 class="fw-bolder">Collecting and Training Data</h2>
+                            <p class="lead fw-normal text-muted mb-0">The second week of camp consisted of more machine learning based topics. We learned about neural networks which are similar to the pathways of the brain and how AI models use them in addition to data labelling technologies like Roboflow and SERP-API in order to identify images. Our team downloaded and uploaded images of Honda and Toyota car models to Roboflow using SERP-API and python and ultimately labelled the data in order for the AI to be able to produce accurate results.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          <!-- About section one-->
+            <section class="py-5 bg-light" id="scroll-target">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6"><img class="img-fluid" src="{{ url_for('static', filename='/timelineimage/image.webp')}}">
+                        </div>
+                        <div class="col-lg-6">
+                            <h1 class="fw-bolder">June 20 - June 24</h1>
+                            <h2 class ="fw-bolder">Frontend Development</h2>
+                            <p class="lead fw-normal text-muted mb-0">The last week of camp put all our skills together in a combined effort. We had a trained AI model and created a website using HTML and CSS to present our work. HTML and CSS are partner languages that are both used to manipulate the layout of a website. The final component of a web page is Flask, a python web framework that allowed us to access and put together our website. We used Bootstrap's templates and personalized our website in order for the user to be able to upload a car picture which is on the Detect page.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                 </main>
+        <!-- Footer-->
+        <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Screaming Sirens 2022</div></div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

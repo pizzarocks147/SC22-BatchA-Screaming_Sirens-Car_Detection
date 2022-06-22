@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Detector - AI Camp</title>
+    <link href="assets/favicon.ico" rel="icon" type="image/x-icon">
+    <!-- Font Awesome icons (free version)-->
+    <script crossorigin="anonymous" src=
+    "https://use.fontawesome.com/releases/v6.1.0/js/all.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel=
+    "stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <!-- Boostrap Grayscale Theme -->
+    <link href="../static/css/styles.css" rel="stylesheet">
+    <style>
+      body{
+        background: black;
+        text-align: center;
+      }
+      main{ background: #ccc }
+      nav{
+        min-height: 3.5rem;
+        background: white;
+      }
+      #drop-area{
+        margin: 16px auto 16px auto;
+        border: 4px solid #444;
+        border-radius: 4px;
+        padding: 16px;
+        background: black;
+        color: white;
+        width: 480px;
+        height: 320px;
+      }
+
+      #slider{
+        position: relative;
+        content: "";
+        -webkit-appearance: none;
+        width: 50%;
+        height: 15px;
+        border-radius: 50px;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        background: white;
+      }
+      #slider:hover{ opacity: 1 }
+      #slider::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: green;
+        cursor: pointer;
+      }
+      #slider::-moz-range-thumb{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: black;
+        cursor: pointer;
+      }
+
+
+/*       #drop-zone.highlight{ border-color: purple; }
+      p{ margin-top: 0; }
+      .my-form{ margin-bottom: 10px; }
+      #gallery{ margin-top: 10px; }
+      #gallery img{
+        width: 150px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        vertical-align: middle;
+      } */
+/*       .button{
+        display: inline-block;
+        padding: 10px;
+        background: #ccc;
+        color: black;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .button:hover{ background: #ddd; }
+      #fileElem{ display: none; }
+      footer{
+        padding: 16px 0;
+        background: black;
+        color: white;
+      } */
+
+    </style>
+  </head>
+  <body>
+    <main style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url({{ url_for('static', filename='/imagescars/busyhighway.gif')}});" class='masthead'>
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+          <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="https://www.ai-camp.org/virtual-summer-camp">AI Summer Camp</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i></button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="teampage">Team</a></li>
+                  <li class="nav-item"><a class="nav-link" href="timeline">Timeline</a></li>
+                </ul>
+              </div>
+          </div>
+        </nav>
+      <h1>Car Detector</h1>
+      <p class="text-light">Submit a car image (.jpg, .jpeg, .png, .tif, .tiff) for the model to test for a car in that image. The car detector currently identifies Honda and Toyota brands.</p>
+<div id="detector">
+        <div id="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <a class="mb-0" id='seefood_button'>
+            <p style="color:white">Drag and drop an image or</p>
+            <form action="detect" id="detect" method="post" enctype="multipart/form-data">
+<!--               onchange="this.form.submit();" -->
+              <input id="input_field" name="file" type="file" oninput="show_thumbnail()" hidden/>
+            </form>
+            <button href="#" target="_blank" class="button">
+              <i class="fas fa-camera pr-2 left" id="upload_button" aria-hidden="true"></i> Upload
+            </button>
+            <p style="color:white" id = "file_name"></p>
+          </a>
+        </div>
+          <input id="slider" form="detect" name="confidence" min="0" max="100" step="10" type="range" value="80" oninput="document.querySelector('#confidence').innerHTML=this.value">
+        <p class="text-light">Minimum Confidence: <span id="confidence">80</span>%</p>
+         <button type="submit" form="detect" value="Submit">Submit</button>
+      </div>
+    </main>
+    <footer>&copy; Copyright 2022 AI Camp</footer>
+    <script>
+      
+      //resetting values on page load
+      document.getElementById('slider').value = 80
+      document.querySelector('#confidence').innerHTML = 80
+      
+      // added to get upload with a button working
+      document.getElementById('seefood_button').addEventListener('click', function(){
+        document.getElementById('input_field').click();
+      });
+     
+  
+    </script>
+   <script>
+ 
+  function show_thumbnail() {
+
+    file = document.getElementById("input_field").files[0]
+    document.getElementById("file_name").innerHTML = file.name
+
+  }
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+
+  function drop(ev) {
+    ev.preventDefault();
+    var fd = new FormData();
+    file = ev.dataTransfer.files[0]
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "https://cocalc10.ai-camp.dev/bf0b3665-37be-49f4-895a-fd6a70d9dc4a/port/12345/detect");
+    request.send(fd);
+  }
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/scripts.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    
+  </body>
+</html>
