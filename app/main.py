@@ -95,7 +95,7 @@ def upload():
             return redirect(request.url)
         # check extension
         if file and check_ext(file.filename):
-            minimum_confidence = 0.25
+#             minimum_confidence = 0.25
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('uploaded_file', filename=filename))
