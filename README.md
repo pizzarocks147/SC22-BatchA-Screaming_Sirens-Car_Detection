@@ -1,7 +1,7 @@
 # Computer Vision Project - Honda and Toyota Car Identifier
 A computer vision project created at AI Camp.
 
-<!--If you want to view the project, feel free to try it out at [this link](https://cocalc10.ai-camp.dev/bf0b3665-37be-49f4-895a-fd6a70d9dc4a/port/12345/home).
+<!--If you want to view the project, feel free to try it out at [this link](https://cocalc10.ai-camp.dev/bf0b3665-37be-49f4-895a-fd6a70d9dc4a/port/12345/home).-->
 
 ### Motive for Creation
 Our main motive for this project was to address two possible problems:
