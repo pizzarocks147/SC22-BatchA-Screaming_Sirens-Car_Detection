@@ -1,117 +1,33 @@
-# Computer Vision Web Scaffold
-A scaffold for deploying dockerized flask applications.
+# Computer Vision Project - Honda and Toyota Car Identifier
+A computer vision project created at AI Camp.
 
-If you have any questions, feel free to open an issue on [Github](https://github.com/organization-x/omni/issues).
+<!--If you want to view the project, feel free to try it out at [this link](https://cocalc10.ai-camp.dev/bf0b3665-37be-49f4-895a-fd6a70d9dc4a/port/12345/home).
 
-### Video Guide
-[![Deploy a Web Project with Flask](https://img.youtube.com/vi/JUb-PpejA7w/0.jpg)](https://youtu.be/JUb-PpejA7w "Deploy a Web Project with Flask")
+### Motive for Creation
+Our main motive for this project was to address two possible problems:
+1. Finding the average car price of a certain car brand and model at a dealership.
+2. Identifying stolen cars. 
 
-This guide covers how you can quickly deploy most projects with the [Flask](https://flask.palletsprojects.com/) framework and our omni scaffold.
 
-### Quickstart Guide for Local Development
+### Timeline 
 
-First clone this repository through 
+How did we create this project in just three weeks? 
 
-`https://github.com/organization-x/omni`
+##### Week 1 (June 6-10)
+During the first week of AI Camp we met with our groups and learned about the focus of the camp: computer vision. After we learned about computer vision and machine learning, we began searching for potential problems a computer vision project could solve.
 
-cd into the `/app` folder
+##### Week 2 (June 13-17)
+The second week of camp consisted of more machine learning based topics. Our team downloaded and uploaded images of Honda and Toyota car models to Roboflow using SERP-API and python and ultimately labelled the data in order for the AI to be able to produce accurate results.
 
-`python3 -m pip install -r requirements.txt`
+##### Week 3 (June 20-24)
+The last week of camp put all our skills together in a combined effort. We had a trained AI model and created a website using HTML and CSS to present our work. We used Bootstrap's templates and personalized our website in order for the user to be able to upload a car picture which is on the Detect page.
 
-edit line 29 the `main.py` file to either the URL of the cocalc server you are on or `localhost` if you are running it on your own PC
-
-Then, clone ultralytics yolov5 in the app folder, by running 
-
-`git clone https://github.com/ultralytics/yolov5`
-`pip install -r yolov5/requirements.txt`
-
-Run
-
- `python3 -m main`
-
-to start the server on local, most changes while developing will be picked up in realtime by the server
-
-### Quickstart Guide for Local Deployment
-
-Make sure docker is installed on your system. Look that up if you don't know what that means.
-
-cd into the root director of the repo then run 
-
-`docker build -t omni .`
-
-once built, run
-
-`docker run -d -p 9000:80 --restart=unless-stopped --name omni omni`
-
-you should then be able to see the `omni` container running when you run 
-
-`docker ps -a`
-
-if it seems to be stuck (i.e. constantly listed as `Restarting`), something is wrong with the docker image or code inside causing it to repeatedly fail.
-
-you can start debugging the project by running 
-
-`docker logs -f omni` 
-
-or
-
-`docker exec -it omni /bin/bash` for an interactive bash terminal (this option only works if the container is running and not stuck in a restart loop)
-
-### Common Issues
-
-`$'\r': command not found` when attempting to start docker container
-
-this is caused by the the `entrypoint.sh` script somehow having CLRF line endings instead of LF line endings.
-
-to fix this run
-
-`sed -i 's/\r$//' entrypoint.sh`
-
-### File Structure
-The files/directories which you will need to edit are **bolded**
-
-**DO NOT TOUCH OTHER FILES. THIS MAY RESULT IN YOUR PROJECT BEING UNABLE TO RUN**
-
-- .gitignore
-- config.py
-- Dockerfile
-- READMD.md
-- entrypoint.sh
-- nginx_host
-- host_config
-- app/
-     - **main.py**
-     - **best.pt** <- you will need to upload this yourself after cloning the repo when developing the site
-     - **requirements.txt**
-     - **utils.py**
-     - templates/
-          - **index.html**
-
-### How to upload best.pt to your file structure?
-Run 
-`cp ../path/to/best.pt best.pt`
-### best.pt ###
-The weights file - must upload if you are running file on coding center or are trying to deploy.
-### main.py ###
-Contains the main flask app itself.
-### requirements.txt ###
-Contains list of packages and modules required to run the flask app. Edit only if you are using additional packages that need to be pip installed in order to run the project.
-
-To generate a requirements.txt file you can run
-
-`pip list --format=freeze > app/requirements.txt`
-
-the requirements.txt file will then be updated. Keep in mind: some packages you install on one operating system may not be available on another. You will have to debug and resolve this yourself if this is the case.
-### static/ ###
-Contains the static images, CSS, & JS files used by the flask app for the webpage. You will need to create this and put files in it. Place all your images used for your website in static/images/ so that you can then reference them in your html files.
-### utils.py ###
-Contains common functions used by the flask app. Put things here that are used more than once in the flask app.
-### templates/ ###
-Contains the HTML pages used for the webpage. Edit these to fit your project. index.html is the demo page.
-### Files used for deployment ###
-`config.py`
-`Dockerfile`
-`entrypoint.sh`
-`nginx_host`
-`host_config`
-**Only modify `host_config`. Do not touch the other files.**
+### The Website
+##### Home Page
+Our home page consists of a detailed explanation of our motives to create this project as well as a section illustrating the resources we used in this project. There is also a gallery of potential car images our AI can detect.
+##### The Car Detector
+The detect page is a user friendly way to try out our AI project. It has multiple features that allow a user to upload an image for the AI model to detect and produce an output. The confidence level is how accurate the AI model believes the image output is. Disclaimer: cars not Honda or Toyota will still be identified. 
+##### Team Page
+The team page is a brief summary of the team that worked on this project. Read about each member and what they like about programming and AI Camp!
+##### Timeline
+The timeline was created to allow a user a detailed description of the steps behind creating the project and website. Read it to see some cool development tools we used!

@@ -81,22 +81,39 @@ def detect():
             return redirect(url_for('uploaded_file', filename=filename))
     return render_template('detect.html')
 
+@app.route(f'{base_url}/uploads/upload', methods=['GET', 'POST'])
+def upload():
+    global minimum_confidence
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        # check extension
+        if file and check_ext(file.filename):
+            minimum_confidence = 0.25
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file', filename=filename))
+    return render_template('detect.html')
+
+
 # when a file appears in static/uploads/
 @app.route(f'{base_url}/uploads/<filename>')
 def uploaded_file(filename):
     here = os.getcwd()
     image_path = os.path.join(here, app.config['UPLOAD_FOLDER'], filename)
-
     model.conf = minimum_confidence
-
     results = model(image_path, size=416)
     if len(results.pandas().xyxy) > 0:
-        results.print()
+        # results.print()
         save_dir = os.path.join(here, app.config['UPLOAD_FOLDER'])
-        # os.remove(image_path)
         results.save(save_dir=save_dir)
         confidences = list(results.pandas().xyxy[0]['confidence'])
-
         format_confidences = []
         # convert to nearest percent as string
         for decimal in confidences:

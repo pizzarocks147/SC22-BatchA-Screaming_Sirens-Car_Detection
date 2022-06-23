@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Detector - AI Camp</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon">
     <!-- Font Awesome icons (free version)-->
     <script crossorigin="anonymous" src=
@@ -14,8 +17,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
-    <!-- Boostrap Grayscale Theme -->
-    <link href="../static/css/styles.css" rel="stylesheet">
     <style>
       body{
         background: black;
@@ -69,35 +70,50 @@
       }
 
 
-/*       #drop-zone.highlight{ border-color: purple; }
-      p{ margin-top: 0; }
-      .my-form{ margin-bottom: 10px; }
-      #gallery{ margin-top: 10px; }
-      #gallery img{
-        width: 150px;
-        margin-bottom: 10px;
-        margin-right: 10px;
-        vertical-align: middle;
-      } */
-/*       .button{
+       .button {
+        border: none;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
         display: inline-block;
-        padding: 10px;
-        background: #ccc;
-        color: black;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
         cursor: pointer;
-        border-radius: 4px;
+      } 
+     
+      .button1 {
+        background-color: black; 
+        color: white; 
+        font-size: 30px
+/*          border-radius: 12px */
+/*         border: 2px solid #4CAF50; */
       }
-      .button:hover{ background: #ddd; }
-      #fileElem{ display: none; }
-      footer{
-        padding: 16px 0;
-        background: black;
+
+      .button1:hover {
+        background-color: green;
         color: white;
-      } */
+        transition-duration: 500ms;
+        border-radius: 20px;
+      }
+
+      .button2 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #008CBA;
+/*         font-size: 14px */
+      }
+
+      .button2:hover {
+        background-color: #008CBA;
+        color: white;
+        border-radius: 200px;
+        transition-duration: 1.5s;
+        
+      }
 
     </style>
   </head>
-  <body>
+  <body onload = "reset_slider()">
     <main style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url({{ url_for('static', filename='/imagescars/busyhighway.gif')}});" class='masthead'>
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
           <div class="container px-4 px-lg-5">
@@ -119,29 +135,28 @@
           <a class="mb-0" id='seefood_button'>
             <p style="color:white">Drag and drop an image or</p>
             <form action="detect" id="detect" method="post" enctype="multipart/form-data">
-<!--               onchange="this.form.submit();" -->
-<!--               oninput="show_thumbnail()" -->
               <input id="input_field" name="file" type="file" accept="image/*" onchange="show_thumbnail()" hidden/>
             </form>
-            <button href="#" target="_blank" class="button">
+            <button href="#" target="_blank" class="button button2">
               <i class="fas fa-camera pr-2 left" id="upload_button" aria-hidden="true"></i> Upload
             </button>
             <p style="color:white" id = "file_name"></p>
           </a>
         </div>
-          <input id="slider" form="detect" name="confidence" min="0" max="100" step="10" type="range" value="80" oninput="document.querySelector('#confidence').innerHTML=this.value">
+          <input autocomplete="off" id="slider" form="detect" name="confidence" min="0" max="100" step="10" type="range"  oninput="document.querySelector('#confidence').innerHTML= this.value">
         <p class="text-light">Minimum Confidence: <span id="confidence">80</span>%</p>
-         <button type="submit" form="detect" value="Submit">Submit</button>
+         <button class="button button1" type="submit" form="detect" value="Submit">Submit</button>
       </div>
     </main>
     <footer>&copy; Copyright 2022 AI Camp</footer>
     <script>
       
       //resetting values on page load
-      document.getElementById('slider').value = 80
-      document.querySelector('#confidence').innerHTML = 80
-      
-      // added to get upload with a button working
+        function reset_slider() {
+          document.querySelector('#confidence').innerHTML = 80
+          document.getElementById('slider').value = 80
+          
+        }
       document.getElementById('seefood_button').addEventListener('click', function(){
         document.getElementById('input_field').click();
       });
